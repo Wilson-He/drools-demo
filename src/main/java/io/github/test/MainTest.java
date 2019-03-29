@@ -4,26 +4,15 @@ import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import io.github.test.constant.ProductConstant;
 import io.github.test.model.Customer;
 import io.github.test.model.Product;
-import org.apache.camel.component.quartz.QuartzHelper;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.drools.core.base.RuleNameEqualsAgendaFilter;
 import org.kie.api.KieServices;
-import org.kie.api.cdi.KSession;
-import org.kie.api.definition.rule.Rule;
 import org.kie.api.runtime.KieSession;
-import org.kie.api.runtime.KieSessionConfiguration;
 import org.kie.api.runtime.StatelessKieSession;
-import org.kie.api.runtime.conf.TimedRuleExecutionFilter;
-import org.kie.api.runtime.conf.TimedRuleExecutionOption;
 import org.kie.api.runtime.rule.FactHandle;
-import org.quartz.impl.QuartzServer;
-import org.quartz.impl.calendar.DailyCalendar;
 import org.quartz.impl.calendar.WeeklyCalendar;
 
 import java.text.ParseException;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.*;
 
@@ -50,10 +39,10 @@ public class MainTest {
 //        timerDrl();
 //        haltDrl();
 //        modifyDrl();
-        forallOrExists();
+        forallOrExistsDrl();
     }
 
-    public static void forallOrExists() {
+    public static void forallOrExistsDrl() {
         KieSession kieSession = createSession("forall-or-exists");
         Product product = new Product().setType(ProductConstant.Type.GLOD)
                 .setPrice(10D);

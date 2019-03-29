@@ -13,12 +13,10 @@ rule "forAll"
         System.out.println("forAll Product type=Gold and price > 10 and customer.age > 15");
   end
 
-
-
 rule "exists"
     when
-        exists Product(type == ProductConstant.Type.GLOD),Product(price > 10)
-                    ,Customer(age > 15)
+        exists (Product(type == ProductConstant.Type.GLOD, price > 10)
+                  or Customer(age > 15))
     then
         System.out.println("exists Product type=Gold and price > 10 and customer.age > 15");
     end
