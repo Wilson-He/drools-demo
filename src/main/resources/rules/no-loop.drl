@@ -1,0 +1,29 @@
+package com.noloop;
+
+import io.github.test.model.Product;
+import io.github.test.constant.ProductConstant;
+
+rule  loopTest
+no-loop false    //true将使insert、update只执行一次，但insert、update依旧会激活其它规则
+when
+    product:Product(price > 0 && price < 5)
+then
+    product.setPrice(product.getPrice() + 1);
+    System.out.println(product.getPrice());
+    update(product);  // update将导致已执行规则重新激活
+ end
+
+rule other
+when
+    product:Product(price > 1)
+then
+    System.out.println("touch other");
+end
+
+rule otherLock
+lock-on-active
+when
+    product:Product(price > 1)
+then
+    System.out.println("touch otherLock");
+end

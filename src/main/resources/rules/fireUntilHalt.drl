@@ -1,0 +1,10 @@
+package com.halt;
+
+import io.github.test.model.Product
+
+rule "halt"
+when
+    product:Product(price > 5)
+then
+       System.out.println("halt price > 5");
+end

@@ -1,0 +1,14 @@
+package com.modifyExpr;
+
+import io.github.test.model.Product;
+import io.github.test.constant.ProductConstant;
+
+rule modifyExpr
+    when
+        product: Product(ProductConstant.Type.DIAMOND.equals(type) && price > 5 && discount > 10)
+    then
+        modify(product){
+            setDiscount(Double.valueOf(15)),
+            setPrice(Double.valueOf(20))
+        }
+    end

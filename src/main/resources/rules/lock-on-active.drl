@@ -1,0 +1,14 @@
+package com.lockOnActive
+
+rule "agenda-group-test"
+    agenda-group "agenda-group"
+    when
+    then
+        System.out.println("规则test agenda-group 被触发");
+    end
+rule otherRule
+
+    when
+    then
+        System.out.println("其他规则被触发");
+    end

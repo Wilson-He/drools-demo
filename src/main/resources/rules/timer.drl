@@ -1,0 +1,26 @@
+package com.schedule;
+
+rule "once-timer-delay"
+timer (int: 5s)
+    when
+    then
+        System.out.println("once-timer-delay");
+    end
+
+rule "interval-timer-delay"
+//timer (int: 2s 3s;start=29-MAR-2019,end=30-MAR-2019)
+timer (int: 2s 3s)
+calendars "calendarRange"
+    when
+    then
+        System.out.println("interval-timer-delay");
+    end
+
+rule "timer-cron"
+timer (cron: 30 * * * * ?)
+date-effective "12-May-2018"
+    when
+    then
+        System.out.println("timer-cron");
+    end
+

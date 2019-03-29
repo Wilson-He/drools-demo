@@ -1,0 +1,19 @@
+package com.rules;
+
+rule "rulegrow-group1"
+    ruleflow-group "group1"
+    when
+    then
+        System.out.println("rulegrow-group1 touch");
+     end
+rule "rulegrow-group2"
+    ruleflow-group "group1"
+    when
+    then
+        System.out.println("rulegrow-group2 touch");
+     end
+
+declare Person //类型声明
+    @metadataTest(Bob) //元数据声明
+    name : String
+end

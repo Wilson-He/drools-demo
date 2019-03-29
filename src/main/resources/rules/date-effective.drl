@@ -1,0 +1,16 @@
+package com.dateEffective
+import org.drools.core.spi.KnowledgeHelper
+
+rule "attach"
+date-effective "25-Mar-2019 23:33:22"
+    when
+    then
+        System.out.println("attach effect");
+    end
+rule "before"
+date-effective "12-May-2018"
+    when
+    then
+        System.out.println("before effect");
+    end
+

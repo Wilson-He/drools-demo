@@ -1,0 +1,28 @@
+package com.rules;
+
+import io.github.test.model.Product;
+import io.github.test.constant.ProductConstant;
+
+rule typeDiamond
+    when
+        product: Product(ProductConstant.Type.DIAMOND.equals(type))
+    then
+        product.setDiscount(15D);
+    end
+rule typeGold
+     when
+        product: Product(ProductConstant.Type.GLOD.equals(type))
+     then
+        product.setDiscount(20D);
+     end
+
+rule calculateDiscount
+    when
+        product:Product()
+    then
+        product.setPrice(percent(product.getPercent(),product.getPrice()));
+end
+
+function Double percent(int percent,Double price){
+  return percent * price / 100 ;
+}
